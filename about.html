@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Emberstone Digital Limited</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a365d;
+      --orange: #f97316;
+      --orange-dark: #ea6c0a;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-50: #f8fafc;
+      --white: #ffffff;
+    }
+    body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    header { position: sticky; top: 0; z-index: 50; background: var(--navy); color: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: .5rem; font-size: 1.25rem; font-weight: 700; }
+    .logo span.ember { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: .95rem; font-weight: 500; opacity: .9; transition: opacity .2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--orange); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%); color: var(--white); padding: 5rem 1.5rem; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: .75rem; }
+    .page-hero p { color: #94a3b8; font-size: 1rem; }
+
+    /* COMMON */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 800; color: var(--slate-900); margin-bottom: .6rem; }
+    .section-header p { color: #64748b; font-size: 1rem; }
+
+    /* INTRO */
+    .intro { padding: 5rem 0; background: var(--white); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: center; }
+    @media (max-width: 768px) { .intro-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .intro-logo-box { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--navy) 0%, #2d4a7a 100%); border-radius: 1.5rem; aspect-ratio: 1; max-width: 280px; margin: 0 auto; }
+    .intro-logo-initials { font-size: 4rem; font-weight: 900; color: var(--white); letter-spacing: -.05em; }
+    .intro-logo-name { font-size: .9rem; color: #93c5fd; font-weight: 500; margin-top: .25rem; }
+    .intro-text h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--slate-900); margin-bottom: 1rem; }
+    .intro-text > p { color: #475569; margin-bottom: 1.5rem; }
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .mv-card { background: var(--slate-50); border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1.25rem; }
+    .mv-card h3 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .mv-card p { font-size: .875rem; color: #64748b; }
+
+    /* TEAM */
+    .team { padding: 5rem 0; background: var(--slate-50); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .team-card { background: var(--white); border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2rem; text-align: center; transition: box-shadow .25s, transform .25s; }
+    .team-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.08); transform: translateY(-4px); }
+    .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #2d4a7a); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.75rem; font-weight: 700; color: var(--white); }
+    .team-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--slate-900); margin-bottom: .25rem; }
+    .team-role { font-size: .85rem; font-weight: 600; color: var(--orange); margin-bottom: .75rem; }
+    .team-card p { font-size: .875rem; color: #64748b; }
+
+    /* VALUES */
+    .values { padding: 5rem 0; background: linear-gradient(135deg, var(--slate-800) 0%, var(--slate-900) 100%); color: var(--white); }
+    .values .section-header h2 { color: var(--white); }
+    .values .section-header p { color: #94a3b8; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+    .value-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: 2rem; transition: background .25s; }
+    .value-card:hover { background: rgba(255,255,255,.1); }
+    .value-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .value-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+    .value-card p { color: #94a3b8; font-size: .9rem; }
+
+    /* FOOTER */
+    footer { background: var(--slate-900); color: #94a3b8; padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: .75rem; }
+    .footer-brand h3 span { color: var(--orange); }
+    .footer-brand p { font-size: .9rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .social-links { display: flex; gap: .75rem; }
+    .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,.08); border-radius: .4rem; font-size: 1rem; transition: background .2s; }
+    .social-links a:hover { background: var(--orange); }
+    .footer-col h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .5rem; }
+    .footer-col ul li a { font-size: .9rem; color: #94a3b8; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--orange); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: .6rem; font-size: .9rem; margin-bottom: .75rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .85rem; }
+    .footer-bottom a { color: #94a3b8; transition: color .2s; }
+    .footer-bottom a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="ember">Ember</span>Stone Digital</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>About Us</h1>
+  <p>Learn more about Emberstone Digital Limited</p>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <div class="intro-logo-box">
+          <div style="text-align:center">
+            <div class="intro-logo-initials">ES</div>
+            <div class="intro-logo-name">Emberstone Digital</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-text">
+        <h2>About Emberstone Digital Limited</h2>
+        <p>We provide digital marketing support, online business consulting, and technology-related services for international clients.</p>
+        <div class="mv-grid">
+          <div class="mv-card">
+            <h3>Our Mission</h3>
+            <p>Empowering businesses with innovative digital solutions</p>
+          </div>
+          <div class="mv-card">
+            <h3>Our Vision</h3>
+            <p>To be the trusted partner for digital transformation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Team</h2>
+      <p>Professional, passionate, and creative team dedicated to providing excellent digital solutions for our clients</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">JS</div>
+        <h3>John Smith</h3>
+        <div class="team-role">CEO &amp; Founder</div>
+        <p>With extensive industry experience, dedicated to driving company growth and creating value for clients</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">SJ</div>
+        <h3>Sarah Johnson</h3>
+        <div class="team-role">Marketing Director</div>
+        <p>With extensive industry experience, dedicated to driving company growth and creating value for clients</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MC</div>
+        <h3>Michael Chen</h3>
+        <div class="team-role">Technology Lead</div>
+        <p>With extensive industry experience, dedicated to driving company growth and creating value for clients</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Values</h2>
+      <p>Our core values guide our actions and decisions</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">&#11088;</div>
+        <h3>Professional</h3>
+        <p>We have deep industry experience and professional knowledge, earning client trust with high-quality service standards</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">&#128161;</div>
+        <h3>Innovation</h3>
+        <p>Continuously exploring new technologies and methods to bring cutting-edge digital solutions to clients</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">&#129309;</div>
+        <h3>Client-Centric</h3>
+        <p>Centered on client needs, providing personalized services to build long-term stable partnerships</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><span>Ember</span>Stone Digital</h3>
+        <p>We are dedicated to providing innovative digital solutions for businesses, helping clients achieve business growth and transformation in the digital era.</p>
+        <div class="social-links">
+          <a href="#" title="Facebook">&#128100;</a>
+          <a href="#" title="Twitter">&#128038;</a>
+          <a href="#" title="LinkedIn">&#128188;</a>
+          <a href="#" title="Instagram">&#128247;</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <div class="footer-contact-item">&#9993; scott@nexusperformanceads.com</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Emberstone Digital Limited. All rights reserved.</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
